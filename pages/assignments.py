@@ -6,6 +6,7 @@ assignment_data = []
 # Function to open the assignments page
 def show_assignments(content):
 
+    # CLear previous page
     for widget in content.winfo_children():
         widget.destroy()
 

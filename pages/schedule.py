@@ -1,48 +1,50 @@
+print ("Schedule.py Loaded")
+
 import tkinter as tk
 import data.database as db
 
-def open_schedule():
+def show_schedule(content):
 
-    window = tk.Toplevel()
+    # Clear the previous page
+    for widget in content.winfo_children():
+        widget.destroy()
 
-    window.title("Schedule")
-    window.geometry("700x500")
-
+    
     tk.Label(
-        window, 
+        content,
         text="Course Name"
     ).pack()
 
-    course_entry = tk.Entry(window)
+    course_entry = tk.Entry(content)
     course_entry.pack()
 
     tk.Label(
-        window, 
+        content, 
         text="Day"
     ).pack()
 
-    day_entry = tk.Entry(window)
+    day_entry = tk.Entry(content)
     day_entry.pack()
 
     tk.Label(
-        window,
+        content,
         text="Start Time"
     ).pack()   
 
-    start_entry = tk.Entry(window)
+    start_entry = tk.Entry(content)
     start_entry.pack() 
 
     tk.Label(
-        window,
+        content,
         text="End Time"
     ).pack()
 
-    end_entry = tk.Entry(window)
+    end_entry = tk.Entry(content)
     end_entry.pack()
 
 
     schedule_list = tk.Listbox(
-        window,
+        content,
         width = 80
     )
 
@@ -76,9 +78,11 @@ def open_schedule():
         refresh()
 
     tk.Button(
-        window,
+        content,
         text="Add Class",
         command=add
     ).pack()
 
     refresh()
+
+print("show_schedule exists:", "show_schedule" in globals())
