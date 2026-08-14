@@ -19,14 +19,18 @@ root.geometry("900x600")
 # Color Theme
 # ==================================================
 
-BACKGROUND = "#F4F6F9"
-SIDEBAR = "#2E7D32"
-BUTTON = "#388E3C"
-BUTTON_HOVER = "#43A047"
-TEXT = "#FFFFFF"
-CONTENT_TEXT = "#222222"
+COLORS = {
+    "background": "#FFF3F7",
+    "sidebar": "#FFFFFF",
+    "primary": "#EC168C",
+    "primary_hover": "#D9147F",
+    "text": "#321827",
+    "secondary_text": "#8B7D87",
+    "border": "#F6C3D9",
+    "card": "#FFFFFF"
+}
 
-root.configure(bg=BACKGROUND)
+root.configure(bg=COLORS["background"])
 
 # ==================================================
 # Fonts
@@ -43,7 +47,7 @@ BODY_FONT = ("Helvetica", 11)
 sidebar = tk.Frame(
     root, 
     width=200, 
-    bg=SIDEBAR
+    bg=COLORS["sidebar"]
 )
 
 sidebar.pack(
@@ -60,7 +64,7 @@ sidebar.pack_propagate(False)
 
 content = tk.Frame(
     root,
-    bg=BACKGROUND
+    bg=COLORS["background"]
 )
 
 content.pack(
@@ -102,10 +106,10 @@ def update_active_button():
     for name, button in buttons.items():
 
         if name == current_page:
-            button.configure(bg=BUTTON_HOVER)
+            button.configure(bg=COLORS["primary_hover"])
 
         else:
-            button.configure(bg=BUTTON)
+            button.configure(bg=COLORS["primary"])
 
 
 # =================================================
@@ -115,8 +119,8 @@ def update_active_button():
 sidebar_title = tk.Label(
     sidebar,
     text="School Planner",
-    bg=SIDEBAR,
-    fg=TEXT,
+    bg=COLORS["sidebar"],
+    fg=COLORS["text"],
     font=TITLE_FONT
 )
 
@@ -135,10 +139,10 @@ def create_sidebar_button(name, page_function):
         text=name,
         command=lambda: show_page(page_function, name),
         font=BUTTON_FONT,
-        bg=BUTTON,
-        fg=TEXT,
-        activebackground=BUTTON_HOVER,
-        activeforeground=TEXT,
+        bg=COLORS["primary"],
+        fg=COLORS["text"],
+        activebackground=COLORS["primary_hover"],
+        activeforeground=COLORS["text"],
         relief="flat",
         bd=0,
         width=18,
